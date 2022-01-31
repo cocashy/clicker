@@ -3,8 +3,11 @@
   src: url('./font/NitalagoRuikaMonoSeikyo-09.woff');
 }
 
+html {
+  touch-action: manipulation;
+}
+
 canvas {
-    display: block;
-    margin: auto;
-    touch-action: manipulation;
+  display: block;
+  margin: auto;
 }
