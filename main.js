@@ -119,9 +119,8 @@ function draw() {
 }
 
 const canvas = document.getElementById('canvas');
-
-canvas.width = Math.min(window.innerWidth, window.innerHeight);
-canvas.height = Math.floor(canvas.width * 16 / 9);
+canvas.width = document.documentElement.clientWidth - 20;
+canvas.height = document.documentElement.clientHeight - 20;
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
@@ -153,8 +152,8 @@ const Game = {
 const Mark = {
   symbol: '⛮',
   isClicked: false,
-  size: WIDTH * 2 / 3,
-  sizeDefault: WIDTH * 2 / 3,
+  size: Math.min(WIDTH, HEIGHT) * 2 / 3,
+  sizeDefault: Math.min(WIDTH, HEIGHT) * 2 / 3,
   shrinkVelocityDefault: 8,
   shrinkVelocity: 0,
   expandVelocity: 1
