@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'ニタラゴルイカ等幅清音教育漢-08';
+  src: url('./font/NitalagoRuikaMonoSeikyo-09.woff');
+}
+
+canvas {
+    display: block;
+    padding: auto;
+    margin: auto;
+}
