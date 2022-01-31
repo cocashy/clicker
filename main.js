@@ -172,6 +172,10 @@ canvas.addEventListener('click', function(e) {
   Mark.shrinkVelocity = Mark.shrinkVelocityDefault;
 }, false);
 
+document.addEventListener("dblclick", function(e) {
+  e.preventDefault();
+}, { passive: false });
+
 setInterval(function() {
   User.watt += User.wattPs;
 }, 1000);
