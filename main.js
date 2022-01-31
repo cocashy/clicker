@@ -119,8 +119,8 @@ function draw() {
 }
 
 const canvas = document.getElementById('canvas');
-canvas.width = 360;
-canvas.height = 640;
+canvas.width = 720;
+canvas.height = 960;
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
