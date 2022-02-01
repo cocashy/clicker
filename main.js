@@ -169,6 +169,8 @@ canvas.addEventListener('click', function(e) {
   User.watt += User.wattPclick;
   Mark.isClicked = true;
   Mark.shrinkVelocity = Mark.shrinkVelocityDefault;
+  audio.src = './audio/click.mp3';
+  audio.play();
 }, false);
 
 document.addEventListener("dblclick", function(e) {
