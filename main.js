@@ -138,7 +138,7 @@ canvas.height = window.innerHeight - 20;
 
 const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
-
+const isWide = WIDTH > HEIGHT;
 const FONT = 'ニタラゴルイカ等幅清音教育漢-08';
 
 const plant = [
@@ -183,8 +183,8 @@ const Game = {
 const Mark = {
   symbol: '⛮',
   isClicked: false,
-  size: Math.min(WIDTH, HEIGHT) / 3,
-  sizeDefault: Math.min(WIDTH, HEIGHT) / 3,
+  size: HEIGHT / 3,
+  sizeDefault: HEIGHT / 3,
   shrinkVelocityDefault: 8,
   shrinkVelocity: 0,
   expandVelocity: 1
@@ -197,10 +197,10 @@ const Back = {
 }
 
 const Balloon = {
-  x: WIDTH / 4,
-  y: HEIGHT * 7 / 32,
-  w: WIDTH / 2,
-  h: HEIGHT / 9,
+  x: isWide ? WIDTH / 2 - 300 : WIDTH / 8,
+  y: HEIGHT * 13 / 64,
+  w: isWide ? 600 : WIDTH * 3 / 4,
+  h: HEIGHT / 8,
   r: 10
 }
 
