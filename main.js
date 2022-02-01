@@ -69,8 +69,8 @@ function draw() {
     }
 
     function updateWattPs() {
-      User.wattPs = User.plant.genecon * Game.plantPs.genecon
-                  + User.plant.hydroPowerPlant * Game.plantPs.hydroPowerPlant;
+      User.wattPs = User.plant.genecon * Game.plantPs.genecon +
+        User.plant.hydroPowerPlant * Game.plantPs.hydroPowerPlant;
     }
 
     function drawWattPs() {
@@ -83,7 +83,7 @@ function draw() {
     }
 
     function updateMark() {
-      Mark.symbol = Game.symbolList[2].symbol;
+      Mark.symbol = Game.symbolList[0].symbol;
       if (Mark.isClicked) {
         Mark.size -= Mark.shrinkVelocity;
         Mark.shrinkVelocity -= Mark.expandVelocity;
@@ -161,8 +161,7 @@ const Game = {
     genecon: 0.1,
     hydroPowerPlant: 2
   },
-  symbolList: [
-    {
+  symbolList: [{
       name: '発電所',
       symbol: '⛮'
     },
@@ -215,7 +214,9 @@ canvas.addEventListener('click', function(e) {
 
 document.addEventListener("dblclick", function(e) {
   e.preventDefault();
-}, { passive: false });
+}, {
+  passive: false
+});
 
 setInterval(function() {
   User.watt += User.wattPs;
