@@ -83,6 +83,7 @@ function draw() {
     }
 
     function updateMark() {
+      Mark.symbol = Game.symbolList[2].symbol;
       if (Mark.isClicked) {
         Mark.size -= Mark.shrinkVelocity;
         Mark.shrinkVelocity -= Mark.expandVelocity;
@@ -105,6 +106,17 @@ function draw() {
       ctx.fillText(Mark.symbol, WIDTH / 2, HEIGHT / 2);
     }
 
+    function drawBalloon() {
+      ctx.beginPath();
+      ctx.fillStyle = 'white';
+      ctx.moveTo(Balloon.x, Balloon.y + Balloon.r);
+      ctx.arc(Balloon.x + Balloon.r, Balloon.y + Balloon.h - Balloon.r, Balloon.r, Math.PI, Math.PI * 0.5, true);
+      ctx.arc(Balloon.x + Balloon.w - Balloon.r, Balloon.y + Balloon.h - Balloon.r, Balloon.r, Math.PI * 0.5, 0, 1);
+      ctx.arc(Balloon.x + Balloon.w - Balloon.r, Balloon.y + Balloon.r, Balloon.r, 0, Math.PI * 1.5, 1);
+      ctx.arc(Balloon.x + Balloon.r, Balloon.y + Balloon.r, Balloon.r, Math.PI * 1.5, Math.PI, 1);
+      ctx.fill();
+    }
+
     updateBack();
     drawBack();
 
@@ -115,6 +127,8 @@ function draw() {
 
     updateMark();
     drawMark();
+
+    drawBalloon();
   }
 }
 
@@ -146,14 +160,32 @@ const Game = {
   plantPs: {
     genecon: 0.1,
     hydroPowerPlant: 2
-  }
+  },
+  symbolList: [
+    {
+      name: '発電所',
+      symbol: '⛮'
+    },
+    {
+      name: '市役所',
+      symbol: '⭗'
+    },
+    {
+      name: '街村役場',
+      symbol: '⭘'
+    },
+    {
+      name: '官公署',
+      symbol: '⛣'
+    }
+  ]
 }
 
 const Mark = {
   symbol: '⛮',
   isClicked: false,
-  size: Math.min(WIDTH, HEIGHT) * 2 / 3,
-  sizeDefault: Math.min(WIDTH, HEIGHT) * 2 / 3,
+  size: Math.min(WIDTH, HEIGHT) / 3,
+  sizeDefault: Math.min(WIDTH, HEIGHT) / 3,
   shrinkVelocityDefault: 8,
   shrinkVelocity: 0,
   expandVelocity: 1
@@ -163,6 +195,14 @@ const Back = {
   h: 180,
   s: 10,
   v: 100
+}
+
+const Balloon = {
+  x: WIDTH / 4,
+  y: HEIGHT * 7 / 32,
+  w: WIDTH / 2,
+  h: HEIGHT / 9,
+  r: 10
 }
 
 canvas.addEventListener('click', function(e) {
