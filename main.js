@@ -106,14 +106,14 @@ function draw() {
       ctx.fillText(Mark.symbol, WIDTH / 2, HEIGHT / 2);
     }
 
-    function drawBalloon() {
+    function drawRoundedRect(obj) {
       ctx.beginPath();
       ctx.fillStyle = 'white';
-      ctx.moveTo(Balloon.x, Balloon.y + Balloon.r);
-      ctx.arc(Balloon.x + Balloon.r, Balloon.y + Balloon.h - Balloon.r, Balloon.r, Math.PI, Math.PI * 0.5, true);
-      ctx.arc(Balloon.x + Balloon.w - Balloon.r, Balloon.y + Balloon.h - Balloon.r, Balloon.r, Math.PI * 0.5, 0, 1);
-      ctx.arc(Balloon.x + Balloon.w - Balloon.r, Balloon.y + Balloon.r, Balloon.r, 0, Math.PI * 1.5, 1);
-      ctx.arc(Balloon.x + Balloon.r, Balloon.y + Balloon.r, Balloon.r, Math.PI * 1.5, Math.PI, 1);
+      ctx.moveTo(obj.x, obj.y + obj.r);
+      ctx.arc(obj.x + obj.r, obj.y + obj.h - obj.r, obj.r, Math.PI, Math.PI * 0.5, true);
+      ctx.arc(obj.x + obj.w - obj.r, obj.y + obj.h - obj.r, obj.r, Math.PI * 0.5, 0, 1);
+      ctx.arc(obj.x + obj.w - obj.r, obj.y + obj.r, obj.r, 0, Math.PI * 1.5, 1);
+      ctx.arc(obj.x + obj.r, obj.y + obj.r, obj.r, Math.PI * 1.5, Math.PI, 1);
       ctx.fill();
     }
 
@@ -128,7 +128,9 @@ function draw() {
     updateMark();
     drawMark();
 
-    drawBalloon();
+    drawRoundedRect(Balloon);
+
+    drawRoundedRect(Menu);
   }
 }
 
@@ -201,6 +203,16 @@ const Balloon = {
   y: HEIGHT * 13 / 64,
   w: isWide ? 600 : WIDTH * 3 / 4,
   h: HEIGHT / 8,
+  r: 10
+}
+
+const Menu = {
+  x: isWide ? WIDTH / 2 - 300 : WIDTH / 8,
+  highY: HEIGHT * 7 / 10,
+  lowY: HEIGHT * 9 / 10,
+  y: HEIGHT * 7 / 10,
+  w: isWide ? 600 : WIDTH * 3 / 4,
+  h: HEIGHT,
   r: 10
 }
 
